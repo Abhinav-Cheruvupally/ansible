@@ -1,0 +1,27 @@
+---
+- name: Installing Apache MSI
+  hosts: win
+  tasks:
+      - name: install chocolatey
+        win_chocolatey:
+                       name=procexp
+                       state=present
+
+      - name: Download the Apache and install using chocolatey
+        win_chocolatey:
+                       name: apache-httpd
+                       state: present
+      - name: instaling Java Runtime
+        win_chocolatey:
+                       name: javaruntime
+                       state: present
+
+      - name: installing dotnet 4.7
+        win_chocolatey:
+                       name: dotnet4.7
+                       state: present
+
+      - name: installing iss server
+        win_feature:
+                       name: web-server
+                       state: present
